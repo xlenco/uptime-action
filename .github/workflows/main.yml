@@ -30,8 +30,8 @@ jobs:
         
     - name: Deploy
       run: |
-        git config --global user.name "iColaBot"
-        git config --global user.email "icolabot@e.yfun.top"
+        git config --global user.name "xlenco"
+        git config --global user.email "1043865083@qq.com"
         git add .
         git commit -m ":zap: Update"
         git push origin master
