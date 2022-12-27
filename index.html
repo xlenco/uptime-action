@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CKY Server Status</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.cn/css2?family=Noto+Sans+SC:wght@300;400;500&display=swap">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="banner">
+        <h1 class="text-4xl font-bold">CKY SERVER STATUS</h1>
+        <p class="text-xl mt-3">检查 CKY 的服务状态，<span style="opacity: 0.65;">由 <a href="https://github.com/oCoke/uptime-action">oCoke/uptime-action</a> 实现。</span></p>
+    </div>
+    <div class="main mt-8" id="main">
+        <h1 class="text-center text-xl" id="loading">Loading...</h1>
+    </div>
+    <div class="giscus"></div>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.8.21/dayjs.min.js"></script>
+    <script src="https://giscus.app/client.js" data-repo="oCoke/uptime-action" data-repo-id="R_kgDOIoe2pw" data-category="Announcements" data-category-id="DIC_kwDOIoe2p84CTLXp" data-mapping="title" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async></script>
+    <script>
+        (async()=>{var s=await fetch("https://p.awa.fyi/st/").then(s=>s.json()),s=s[s.length-1],l=await fetch("https://p.awa.fyi/st/?name="+s).then(s=>s.json());if(l&&l.status){for(var n in l.result){var i=l.result[n];let s,t,a,e="";s=i.ssl?"https://":"http://",s+=n,colorClass=i.ok?(t="正常","text-green-600"):(t="错误","text-red-600"),i.ssl||i.sslCheck||(t="SSL 错误",a="错误"),i.ssl&&(a="正常",e=`<p>SSL 生效：${dayjs(i.sslDetails.validFrom).format("YYYY-MM-DD HH:mm")}</p><p>SSL 失效：${dayjs(i.sslDetails.validTo).format("YYYY-MM-DD HH:mm")}</p><p>SSL 剩余：${i.sslDetails.daysRemaining} 天</p>`),document.getElementById("main").innerHTML+=`<div class="card bg-gray-100 ring-1 rounded-lg ring-gray-900/5 shadow-xs my-6"><h2 class="text-lg"><a href="${s}">🔗 ${i.name}</a><span class="pin ${colorClass}" style="opacity: 0.7;">${t}</span></h2><div class="more"><p>SSL 状态：${a}</p>${e}<p>上次检查：${dayjs(dayjs(i.time)).format("YYYY-MM-DD HH:mm")}</p></div><div id="st-${n}"></div></div>`}setTimeout(()=>{document.getElementById("loading").remove();for(let s=0;s<document.getElementsByClassName("card").length;s++)document.getElementsByClassName("card")[s].style.opacity=1},500)}})()
+    </script>
+</body>
+
+</html>
