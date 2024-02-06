@@ -1,10 +1,10 @@
 export default {
     list: [
         {
-            host: "yfun.top",
+            host: "xlenco.top",
             ssl: true,
             port: 443,
-            name: "YFun's Home",
+            name: "xlenco",
             method: "GET",
             ok: "200-299",
         },
